@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adire Clothing Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product-card {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .buyer-details-section {
+            display: none;
+        }
+
+        .checkout-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Adire Clothing Store</h1>
+    </header>
+
+    <div class="product-container">
+        <!-- Product Cards (Add 20 or more as needed) -->
+        <div class="product-card">
+            <img src="ADURAMIGBA.jpg" alt="Adire T-Shirt" style="width: 100%;">
+            <h3>Adire T-Shirt</h3>
+            <p>$20.00</p>
+            <button onclick="addToCart('Adire T-Shirt', 20)">Add to Cart</button>
+        </div>
+
+        <!-- Repeat the above block for each product -->
+        <!-- Add a total of 20 products -->
+        <div class="product-card">
+            <img src="hero image.jpg" alt="Adire Hoodie" style="width: 100%;">
+            <h3>Adire Hoodie</h3>
+            <p>$40.00</p>
+            <button onclick="addToCart('Adire Hoodie', 40)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="banner.png" alt="Adire Jeans" style="width: 100%;">
+            <h3>Adire Jeans</h3>
+            <p>$30.00</p>
+            <button onclick="addToCart('Adire Jeans', 30)">Add to Cart</button>
+        </div>
+
+        <!-- Continue adding more product cards as needed -->
+
+    </div>
+
+    <div class="cart-container">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total-price">0.00</span></p>
+
+        <!-- Buyer Details Section -->
+        <div class="buyer-details-section">
+            <h2>Buyer Details</h2>
+            <form id="buyer-details-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea><br>
+
+                <button type="button" onclick="completeOrder()">Complete Order</button>
+            </form>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        // Previous script code remains the same
+
+        // Add more products
+        const additionalProducts = [
+            { name: 'Adire Sweater', price: 35.00, image: 'sweater.jpg' },
+            { name: 'Adire Skirt', price: 25.00, image: 'skirt.jpg' },
+            // Add more products as needed
+            { name: 'Adire Jacket', price: 45.00, image: 'jacket.jpg' },
+            { name: 'Adire Scarf', price: 15.00, image: 'scarf.jpg' },
+            { name: 'Adire Leggings', price: 30.00, image: 'leggings.jpg' },
+            // Add more products as needed
+        ];
+
+        // Display additional products
+        const productContainer = document.querySelector('.product-container');
+        additionalProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" style="width: 100%;">
+                <h3>${product.name}</h3>
+                <p>$${product.price.toFixed(2)}</p>
+                <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+            `;
+            productContainer.appendChild(productCard);
+        });
+
+        // Updated checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items before checking out.');
+            } else {
+                document.querySelector('.buyer-details-section').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
